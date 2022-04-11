@@ -30,7 +30,11 @@ def count_values(a, k):
     [2, 3, 2, 1]
     """
     ###TODO
-    pass
+    list = [0] * (k+1)
+    for x in a:
+      list[x]+=1
+    return list
+
 
 def test_count_values():
     assert count_values([2,2,1,0,1,0,1,3], 3) == [2, 3, 2, 1]
@@ -47,7 +51,11 @@ def get_positions(counts):
     [0, 2, 5, 7]    
     """
     ###TODO
-    pass
+    list = scan(plus, 0, counts)
+    output = list[0]
+    p = output[:-1]
+    p.insert(0,0)
+    return p
     
 def test_get_positions():
     assert get_positions([2, 3, 2, 1]) == [0, 2, 5, 7]
@@ -67,8 +75,14 @@ def construct_output(a, positions):
     [0,0,1,1,1,2,2,3]    
     """
     ###TODO
-    pass
+    output = [0]*len(a)
+    for i in a:
+      x = positions[i]
+      output[x] = i
+      positions[i] = positions[i] + 1 
+    return output
 
+  
 def test_construct_output():
     assert construct_output([2,2,1,0,1,0,1,3], [0, 2, 5, 7]) == [0,0,1,1,1,2,2,3]
     
@@ -86,11 +100,13 @@ def test_count_values_mr():
 
 def count_map(value):
     ###TODO
-    pass
+    x = []
+    x.append((value, 1))
+    return x
 
 def count_reduce(group):
     ###TODO
-    pass
+    return ((group[0]), (group[1]))
 
 
 # the below functions are provided for use above.
